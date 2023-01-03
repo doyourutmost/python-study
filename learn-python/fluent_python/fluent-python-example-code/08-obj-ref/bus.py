@@ -1,4 +1,3 @@
-
 """
 >>> import copy
 >>> bus1 = Bus(['Alice', 'Bill', 'Claire', 'David'])
@@ -11,6 +10,7 @@
 ['Alice', 'Bill', 'Claire', 'David']
 
 """
+
 
 # BEGIN BUS_CLASS
 class Bus:
@@ -26,4 +26,16 @@ class Bus:
 
     def drop(self, name):
         self.passengers.remove(name)
+
+
 # END BUS_CLASS
+
+if __name__ == '__main__':
+    import copy
+
+    bus1 = Bus(['Alice', 'Bill', 'Claire', 'David'])
+    bus2 = copy.copy(bus1)
+    bus3 = copy.deepcopy(bus1)
+    bus1.drop('Bill')
+    print(bus2.passengers)  # ['Alice', 'Claire', 'David']
+    print(bus3.passengers)  # ['Alice', 'Bill', 'Claire', 'David']
