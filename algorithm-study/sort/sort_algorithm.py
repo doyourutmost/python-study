@@ -64,8 +64,62 @@ def insertion_sort(arr: List[int]) -> List[int]:
     （5）将新元素插入到该位置后；
     （6）重复步骤 2~5。
     """
-    for i in range(len(arr)):
-        pass
+    for i in range(1, len(arr)):
+        cur_val = arr[i]
+        pre_index = i
+        while pre_index >= 1 and arr[pre_index - 1] > cur_val:
+            arr[pre_index] = arr[pre_index - 1]
+            pre_index -= 1
+        arr[pre_index] = cur_val
+    return arr
+
+
+def shell_sort(arr: List[int]) -> List[int]:
+    """
+    希尔排序
+    稳定性：不稳定
+    时间复杂度 ：最佳：O(nlogn)， 最差：O(n2) 平均：O(nlogn)
+    空间复杂度 ：O(1)
+    最差：O(n2)列子：5,1,6,2,7,3,8,4
+    排序方式 ：In-place
+    （1）选择一个增量序列 {t1, t2, …, tk}，其中 (ti>tj, i<j, tk=1)；
+    （2）按增量序列个数 k，对序列进行 k 趟排序；
+    （3）每趟排序，根据对应的增量 t，将待排序列分割成若干长度为 m 的子序列，分别对各子表进行直接插入排序。仅增量因子为 1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。
+    """
+    arr_len = len(arr)
+    inc_factor = 2  # 增量因子
+    gap = arr_len // inc_factor
+    while gap > 0:
+        for i in range(1, arr_len, gap):
+            cur_val = arr[i]
+            pre_index = i
+            while pre_index >= gap and arr[pre_index - gap] > cur_val:
+                arr[pre_index] = arr[pre_index - gap]
+                pre_index -= gap
+            arr[pre_index] = cur_val
+        gap //= inc_factor
+    return arr
+
+
+def merge_sort(arr: List[int]) -> List[int]:
+    """
+    归并排序
+    稳定性：稳定
+    时间复杂度 ：最佳：O(nlogn)， 最差：(nlogn) 平均：(nlogn)
+    空间复杂度 ：O(n)
+    排序方式 ：Out-place
+    算法步骤：
+    归并排序算法是一个递归过程，边界条件为当输入序列仅有一个元素时，直接返回，具体过程如下：
+    （1）如果输入内只有一个元素，则直接返回，否则将长度为 n 的输入序列分成两个长度为 n/2 的子序列；
+    （2）分别对这两个子序列进行归并排序，使子序列变为有序状态；
+    （3）设定两个指针，分别指向两个已经排序子序列的起始位置；
+    （4）比较两个指针所指向的元素，选择相对小的元素放入到合并空间（用于存放排序结果），并移动指针到下一位置；
+    （5）重复步骤 3 ~ 4 直到某一指针达到序列尾；
+    （6）将另一序列剩下的所有元素直接复制到合并序列尾。
+    """
+
+
+def merge(arr1: List[int], arr2: List[int]) -> List[int]:
     pass
 
 
@@ -83,65 +137,13 @@ if __name__ == '__main__':
 
     # print(check_order(bubble_sort(arr)))
     # print(check_order(selection_sort(arr)))
-    #
+    # print(check_order(insertion_sort(arr)))
+    # print(check_order(shell_sort(arr)))
+
     # /**
 
     # */
-    # public static int[] insertionSort(int[] arr) {
-    # for (int i = 1; i < arr.length; i++) {
-    #     int cur = arr[i];
-    # int preIndex = i;
-    # for (; preIndex >= 1 && arr[preIndex - 1] > cur; preIndex--) {
-    # arr[preIndex] = arr[preIndex - 1];
-    # }
-    # arr[preIndex] = cur;
-    # }
-    # return arr;
-    # }
-    #
-    # /**
-    # * 希尔排序
-    #   * 稳定性：不稳定
-    #            * 时间复杂度 ：最佳：O(nlogn)， 最差：O(n2) 平均：O(nlogn)
-    #                                                         * 空间复杂度 ：O(1)
-    #                                                                       * 最差：O(n2)列子：5,1,6,2,7,3,8,4
-    #                                                                                                      * 排序方式 ：In-place
-    #                                                                                                                  * 算法步骤：
-    # * （1）选择一个增量序列 {t1, t2, …, tk}，其中 (ti>tj, i<j, tk=1)；
-    # * （2）按增量序列个数 k，对序列进行 k 趟排序；
-    # * （3）每趟排序，根据对应的增量 t，将待排序列分割成若干长度为 m 的子序列，分别对各子表进行直接插入排序。仅增量因子为 1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。
-    # */
-    # public static int[] shellSort(int[] arr) {
-    # int incFactor = 2;
-    # for (int gap = arr.length / incFactor; gap > 0; gap /= incFactor) {
-    # for (int i = 1; i < arr.length; i++) {
-    # int cur = arr[i];
-    # int preIndex = i;
-    # for (; preIndex >= gap && arr[preIndex - gap] > cur; preIndex -= gap) {
-    # arr[preIndex] = arr[preIndex - gap];
-    # }
-    # arr[preIndex] = cur;
-    # }
-    # }
-    # return arr;
-    # }
-    #
-    # /**
-    # * 归并排序
-    #   * 稳定性：稳定
-    #            * 时间复杂度 ：最佳：O(nlogn)， 最差：(nlogn) 平均：(nlogn)
-    #                                                           * 空间复杂度 ：O(n)
-    #                                                                         * 排序方式 ：Out-place
-    #                                                                                     * 算法步骤：
-    # * 归并排序算法是一个递归过程，边界条件为当输入序列仅有一个元素时，直接返回，具体过程如下：
-    # * （1）如果输入内只有一个元素，则直接返回，否则将长度为 n 的输入序列分成两个长度为 n/2 的子序列；
-    # * （2）分别对这两个子序列进行归并排序，使子序列变为有序状态；
-    # * （3）设定两个指针，分别指向两个已经排序子序列的起始位置；
-    # * （4）比较两个指针所指向的元素，选择相对小的元素放入到合并空间（用于存放排序结果），并移动指针到下一位置；
-    # * （5）重复步骤 3 ~ 4 直到某一指针达到序列尾；
-    # * （6）将另一序列剩下的所有元素直接复制到合并序列尾。
-    # */
-    # public static int[] mergeSort(int[] arr) {
+    # public static int[] (int[] arr) {
     # if (arr.length <= 1) {
     # return arr;
     # }
