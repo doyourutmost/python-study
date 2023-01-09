@@ -195,3 +195,14 @@ BaseException
 | itertools | groupby(it, key=None) | 产出由两个元素组成的元素，形式为 (key, group)，其中 key 是分组标准， group 是生成器，用于产出分组里的元素 |
 | （内置）      | reversed(seq)         | 从后向前，倒序产出seq中的元素；seq必须是序列，或者是实 现了__reversed__ 特殊方法的对象             |
 | itertools | tee(it, n=2)          | 产出一个由 n 个生成器组成的元组，每个生成器用于单独产出输入的可迭代对象中的元素                         |
+
+### 3.6、可迭代的归约函数
+
+| 模块        | 函数                         | 说明                                                                        |
+|-----------|----------------------------|---------------------------------------------------------------------------|
+| （内置）      | all(it)                    | it 中的所有元素都为真值时返回 True，否则返回 False；all([]) 返回 True                          |
+| （内置）      | any(it)                    | 只要 it 中有元素为真值就返回 True，否则返回 False；any([]) 返回False                          |
+| （内置）      | max(it, [key=,][default=]) | 返回 it 中值最大的元素；key 是排序函数，与 sorted 函数中的一样； 如果可迭代的对象为空，返回 default            |
+| （内置）      | min(it, [key=,][default=]) | 返回 it 中值最小的元素；key 是排序函数，与 sorted 函数中的一样； 如果可迭代的对象为空，返回 default            |
+| functools | reduce(func, it,[initial]) | 把前两个元素传给 func，然后把计算结果和第三个元素传给 func，以此类推，返回最后的结果；如果提供了 initial，把它当作第一个元素传入 |
+| （内置）      | sum(it, start=0)           | it 中所有元素的总和，如果提供可选的 start，会把它加上（计算浮点数的加法时，可以使用 math.fsum 函数提高精度）          |
