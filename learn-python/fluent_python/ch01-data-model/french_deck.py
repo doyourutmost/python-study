@@ -1,5 +1,6 @@
 import collections
 import random
+import reprlib
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
@@ -16,6 +17,9 @@ class FrenchDeck(object):
 
     def __getitem__(self, position):
         return self._cards[position]
+
+    def __repr__(self):
+        return reprlib.repr(self._cards)
 
 
 def spades_high(card):
@@ -51,5 +55,21 @@ if __name__ == '__main__':
 
     print('排序:', list(sorted(deck, key=spades_high, reverse=True)))
 
+
     # 洗牌
-    # random.shuffle(deck) 按照目前的设计，FrenchDeck 是不能洗牌的，因为这摞牌是不可变的（immutable）：卡牌和它们的位置都是固定的
+    # random.shuffle(deck)  # 按照目前的设计，FrenchDeck 是不能洗牌的，因为这摞牌是不可变的（immutable）：卡牌和它们的位置都是固定的
+
+    def set_card(self, position, card):
+        """
+        # 为 FrenchDeck 打猴子补丁，把它变成可变的，让 random.shuffle 函数能处理
+        :param self:
+        :param position:
+        :param card:
+        :return:
+        """
+        self._cards[position] = card
+
+
+    FrenchDeck.__setitem__ = set_card
+    random.shuffle(deck)
+    print(deck)

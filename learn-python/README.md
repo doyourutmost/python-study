@@ -72,3 +72,126 @@ Python 定义了以下这些类型码：
 。通过这样的限制，即使序列很长，拥有很多数字，也能节省空间。
 
 **数组定义好类型，就不能存放非定义类型的数据。**
+
+## 2、异常结构
+```markdown
+BaseException
+ ├── BaseExceptionGroup
+ ├── GeneratorExit
+ ├── KeyboardInterrupt
+ ├── SystemExit
+ └── Exception
+      ├── ArithmeticError
+      │    ├── FloatingPointError
+      │    ├── OverflowError
+      │    └── ZeroDivisionError
+      ├── AssertionError
+      ├── AttributeError
+      ├── BufferError
+      ├── EOFError
+      ├── ExceptionGroup [BaseExceptionGroup]
+      ├── ImportError
+      │    └── ModuleNotFoundError
+      ├── LookupError
+      │    ├── IndexError
+      │    └── KeyError
+      ├── MemoryError
+      ├── NameError
+      │    └── UnboundLocalError
+      ├── OSError
+      │    ├── BlockingIOError
+      │    ├── ChildProcessError
+      │    ├── ConnectionError
+      │    │    ├── BrokenPipeError
+      │    │    ├── ConnectionAbortedError
+      │    │    ├── ConnectionRefusedError
+      │    │    └── ConnectionResetError
+      │    ├── FileExistsError
+      │    ├── FileNotFoundError
+      │    ├── InterruptedError
+      │    ├── IsADirectoryError
+      │    ├── NotADirectoryError
+      │    ├── PermissionError
+      │    ├── ProcessLookupError
+      │    └── TimeoutError
+      ├── ReferenceError
+      ├── RuntimeError
+      │    ├── NotImplementedError
+      │    └── RecursionError
+      ├── StopAsyncIteration
+      ├── StopIteration
+      ├── SyntaxError
+      │    └── IndentationError
+      │         └── TabError
+      ├── SystemError
+      ├── TypeError
+      ├── ValueError
+      │    └── UnicodeError
+      │         ├── UnicodeDecodeError
+      │         ├── UnicodeEncodeError
+      │         └── UnicodeTranslateError
+      └── Warning
+           ├── BytesWarning
+           ├── DeprecationWarning
+           ├── EncodingWarning
+           ├── FutureWarning
+           ├── ImportWarning
+           ├── PendingDeprecationWarning
+           ├── ResourceWarning
+           ├── RuntimeWarning
+           ├── SyntaxWarning
+           ├── UnicodeWarning
+           └── UserWarning
+```
+
+## 3、标准库中的生成器函数
+### 3.1、用于过滤的生成器函数
+第一组是用于过滤的生成器函数：从输入的可迭代对象中产出元素的子集，而且不修改元
+素本身
+
+| 模块        | 函数                                                 | 说明                                                                                      |
+|-----------|----------------------------------------------------|-----------------------------------------------------------------------------------------|
+| itertools | compress(it, selector_it)                          | 并行处理两个可迭代的对象；如 selector_it 中的元素是 真值，产出 it 中对应的元素                                        |
+| itertools | dropwhile(predicate, it)                           | 处理 it，跳过 predicate 的计算结果为真值的元素，然后 产出剩下的各个元素（不再进一步检查）                                    |
+| （内置）      | filter(predicate, it)                              | 把 it 中的各个元素传给 predicate，如果 predicate(item) 返回真值，那么产出对应的元素；如果 predicate 是 None，那么只产出真值元素 |
+| itertools | filterfalse(predicate, it)                         | 与 filter 函数的作用类似，不过 predicate 的逻辑是相反的：predicate 返回假值时产出对应的元素                            |
+| itertools | islice(it, stop) 或 islice(it, start, stop, step=1) | 产出 it 的切片，作用类似于 s[:stop] 或 s[start:stop:step]， 不过 it 可以是任何可迭代的对象，而且这个函数实现的是惰 性操作        |
+| itertools | takewhile(predicate, it)                           | predicate 返回真值时产出对应的元素，然后立即停止，不 再继续检查                                                   |
+### 3.2、用于映射的生成器函数
+
+| 模块        | 函数                              | 说明                                                                           |
+|-----------|---------------------------------|------------------------------------------------------------------------------|
+| itertools | accumulate(it, [func])          | 产出累积的总和；如果提供了 func，那么把前两个元素传给它，然后把计算结果和下一个元素传给它，以此类推， 最后产出结果                 |
+| （内置）      | enumerate(iterable, start=0)    | 产出由两个元素组成的元组，结构是 (index, item)，其中 index 从 start 开始计数，item 则从 iterable 中获取    |
+| （内置）      | map(func, it1, [it2, ..., itN]) | 把 it 中的各个元素传给 func，产出结果；如果传入 N 个可 迭代的对象，那么 func 必须能接受 N 个参数，而且要并行 处理各个可迭代的对象 |
+| itertools | starmap(func, it)               | 把 it 中的各个元素传给 func，产出结果；输入的可迭代对 象应该产出可迭代的元素 iit，然后以 func(*iit) 这种形 式调用 func  |
+
+### 3.3、合并多个可迭代对象的生成器函数
+
+| 模块        | 函数                                         | 说明                                                                                |
+|-----------|--------------------------------------------|-----------------------------------------------------------------------------------|
+| itertools | chain(it1, ..., itN)                       | 先产出 it1 中的所有元素，然后产出 it2 中的所有元素，以此类 推，无缝连接在一起                                      |
+| itertools | chain.from_iterable(it)                    | 产出 it 生成的各个可迭代对象中的元素，一个接一个，无缝连接 在一起；it 应该产出可迭代的元素，例如可迭代的对象列表                      |
+| itertools | product(it1, ..., itN, repeat=1)           | 计算笛卡儿积：从输入的各个可迭代对象中获取元素，合并成由 N 个元素组成的元组，与嵌套的 for 循环效果一样；repeat 指明重复 处理多少次输入的可迭代对象 |
+| （内置）      | zip(it1, ..., itN)                         | 并行从输入的各个可迭代对象中获取元素，产出由 N 个元素组成 的元组，只要有一个可迭代的对象到头了，就默默地停止                          |
+| itertools | zip_longest(it1, ..., itN, fillvalue=None) | itertools 并行从输入的各个可迭代对象中获取元素，产出由 N 个元素组 成的元组，等到最长的可迭代对象到头后才停止，空缺的值使用fillvalue 填充  |
+
+
+### 3.4、把输入的各个元素扩展成多个输出元素的生成器函数
+
+| 模块        | 函数                             | 说明                                                              |
+|-----------|--------------------------------|-----------------------------------------------------------------|
+| itertools | combinations(it, out_len)      | 把 it 产出的 out_len 个元素组合在一起，然后产出 itertools combinations_with_re   |
+| itertools | placement(it, out_len)         | 把 it 产出的 out_len 个元素组合在一起，然后产出，包含相同元素的组合                        |
+| itertools | count(start=0, step=1)         | 从 start 开始不断产出数字，按 step 指定的步幅增加                                 |
+| itertools | cycle(it)                      | 从 it 中产出各个元素，存储各个元素的副本，然后按顺序重复不断地产出各个元素                         |
+| itertools | permutations(it, out_len=None) | 把 out_len 个 it 产出的元素排列在一起，然后产出这些排列；out_len 的默认值等于 len(list(it)) |
+| itertools | repeat(item, [times])          | 重复不断地产出指定的元素，除非提供 times，指定次数                                    |
+
+### 3.5、用于重新排列元素的生成器函数
+
+| 模块        | 函数                    | 说明                                                                |
+|-----------|-----------------------|-------------------------------------------------------------------|
+| itertools | groupby(it, key=None) | 产出由两个元素组成的元素，形式为 (key, group)，其中 key 是分组标准， group 是生成器，用于产出分组里的元素 |
+| （内置）      | reversed(seq)         | 从后向前，倒序产出seq中的元素；seq必须是序列，或者是实 现了__reversed__ 特殊方法的对象             |
+| itertools | tee(it, n=2)          | 产出一个由 n 个生成器组成的元组，每个生成器用于单独产出输入的可迭代对象中的元素                         |
