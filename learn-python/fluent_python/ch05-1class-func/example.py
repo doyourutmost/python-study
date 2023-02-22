@@ -93,6 +93,6 @@ def example5_26() -> None:
 if __name__ == '__main__':
     # print(example5_9())
     # print(example5_23())
-    # example5_24()
+    example5_24()
     # example5_25()
-    example5_26()
+    # example5_26()

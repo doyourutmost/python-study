@@ -11,15 +11,14 @@ Sample run::
 """
 # BEGIN FLAGS_PY
 import os
-import time
-import sys
-
 import requests  # <1>
+import sys
+import time
 
 POP20_CC = ('CN IN US ID BR PK NG BD RU JP '
             'MX PH VN ET EG DE IR TR CD FR').split()  # <2>
 
-BASE_URL = 'http://flupy.org/data/flags'  # <3>
+BASE_URL = 'https://www.fluentpython.com/data/flags'  # <3>
 
 DEST_DIR = 'downloads/'  # <4>
 

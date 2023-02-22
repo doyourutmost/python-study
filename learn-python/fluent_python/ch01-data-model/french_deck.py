@@ -2,6 +2,7 @@ import collections
 import random
 import reprlib
 
+# collections.namedtuple 用以构建只有少数属性但是没有方法的对象
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
 
@@ -22,7 +23,7 @@ class FrenchDeck(object):
         return reprlib.repr(self._cards)
 
 
-def spades_high(card):
+def spades_high(card: Card):
     """
     用点数来判定扑克牌的大小，2 最小、A 最大；
     同时还要加上对花色的判定，黑桃最大、红桃次之、方块再次、梅花最小
@@ -54,7 +55,6 @@ if __name__ == '__main__':
     print("Card('Q', 'hearts') in deck:", Card('Q', 'hearts') in deck)
 
     print('排序:', list(sorted(deck, key=spades_high, reverse=True)))
-
 
     # 洗牌
     # random.shuffle(deck)  # 按照目前的设计，FrenchDeck 是不能洗牌的，因为这摞牌是不可变的（immutable）：卡牌和它们的位置都是固定的
