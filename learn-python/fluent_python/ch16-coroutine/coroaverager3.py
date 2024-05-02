@@ -65,8 +65,7 @@ def main(data):  # <8> main 函数是客户端代码，用 PEP 380 定义的术�
         next(group)  # <10> 预激 group 协程
         for value in values:
             group.send(value)  # <11> 把各个 value 传给 grouper。传入的值最终到达 averager 函数中 term = yield 那一行；grouper 永远不知道传入的值是什么
-        # group.send(
-        #     None)  # important! <12>  None 传入 grouper，导致当前的 averager 实例终止，也让 grouper 继续运行，再创建一个 averager 实例，处理下一组值
+        group.send(None)  # important! <12>  None 传入 grouper，导致当前的 averager 实例终止，也让 grouper 继续运行，再创建一个 averager 实例，处理下一组值
 
     # print(results)  # uncomment to debug
     report(results)

@@ -22,6 +22,7 @@ def example7_1() -> None:
         print('running target()')
 
     target()  # 调用被装饰的 target 其实会运行 inner
+    deco(target())()
     print(target)  # 审查对象，发现 target 现在是 inner 的引用。
 
 

@@ -26,13 +26,17 @@ class Sentence:
     def __str__(self):
         return str(self.words)
 
+    def __call__(self, *args, **kwargs):
+        for w in self.words:
+            print(w)
+
 
 if __name__ == '__main__':
     s = Sentence('"The time has come," the Walrus said,')
     print(s)
-
-    for i in s:
-        print(i)
+    s()
+    # for i in s:
+    #     print(i)
     """
     序列可以迭代的原因：iter函数
     内置的 iter 函数有以下作用。

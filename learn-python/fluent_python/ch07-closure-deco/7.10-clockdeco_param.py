@@ -42,3 +42,6 @@ if __name__ == '__main__':
     for i in range(3):
         snooze(.123)
 
+    snooze(.1)
+    clock('{name}: {elapsed}')(time.sleep)(.2)
+    clock('{name}({args}) dt={elapsed:0.3f}s')(time.sleep)(.2)

@@ -86,5 +86,3 @@ if __name__ == '__main__':
     sv = ShortVector2d(1 / 11, 1 / 27)
     print('ShortVector2d(1/11, 1/27):', sv)
     print(' len(bytes(sv)):', len(bytes(sv)))  # 确认得到的字节序列长度为 9 字节，而不是之前的 17 字节
-
-    pass

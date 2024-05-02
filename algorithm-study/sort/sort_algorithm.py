@@ -154,6 +154,7 @@ def merge_sort(arr: List[int]) -> List[int]:
         arr1 = arr[:arr_size // 2]
         arr2 = arr[arr_size // 2:]
         return merge(_merge_sort(arr1), _merge_sort(arr2))
+
     return _merge_sort(arr)
 
 
