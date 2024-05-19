@@ -14,10 +14,11 @@ _sym_db = _symbol_database.Default()
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from . import protobuf_import_pb2 as protobuf__import__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eprotobuf.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x19google/protobuf/any.proto\x1a\x15protobuf_import.proto\"\xdb\x02\n\x0b\x45\x63hoRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07hobbies\x18\x02 \x03(\t\x12\x12\n\x05\x65mail\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x03sex\x18\x04 \x01(\x0e\x32\x04.Sex\x12\x19\n\x07\x61\x64\x64ress\x18\x05 \x01(\x0b\x32\x08.Address\x12%\n\x07\x63ompany\x18\x06 \x01(\x0b\x32\x14.EchoRequest.Company\x12!\n\x03\x61ny\x18\x07 \x01(\x0b\x32\x14.google.protobuf.Any\x12\"\n\x03map\x18\x0b \x03(\x0b\x32\x15.EchoRequest.MapEntry\x1a*\n\x08MapEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x32\n\x07\x43ompany\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x08.AddressB\x08\n\x06_emailJ\x04\x08\x08\x10\x0bR\x06\x65mail1R\x05name1\")\n\x07\x41\x64\x64ress\x12\x10\n\x08province\x18\x01 \x01(\t\x12\x0c\n\x04\x63ity\x18\x02 \x01(\t\"\xc9\x02\n\x0c\x45\x63hoResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07hobbies\x18\x02 \x03(\t\x12\x12\n\x05\x65mail\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x03sex\x18\x04 \x01(\x0e\x32\x04.Sex\x12\x19\n\x07\x61\x64\x64ress\x18\x05 \x01(\x0b\x32\x08.Address\x12&\n\x07\x63ompany\x18\x06 \x01(\x0b\x32\x15.EchoResponse.Company\x12!\n\x03\x61ny\x18\x07 \x01(\x0b\x32\x14.google.protobuf.Any\x12#\n\x03map\x18\x0b \x03(\x0b\x32\x16.EchoResponse.MapEntry\x1a\x32\n\x07\x43ompany\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x08.Address\x1a*\n\x08MapEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x08\n\x06_email2l\n\x04\x45\x63ho\x12\'\n\x08TestEcho\x12\x0c.EchoRequest\x1a\r.EchoResponse\x12;\n\tTestEmpty\x12\x16.google.protobuf.Empty\x1a\x16.google.protobuf.EmptyB\tZ\x07.;protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eprotobuf.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x19google/protobuf/any.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x15protobuf_import.proto\"\x8a\x03\n\x0b\x45\x63hoRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07hobbies\x18\x02 \x03(\t\x12\x12\n\x05\x65mail\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x03sex\x18\x04 \x01(\x0e\x32\x04.Sex\x12\x19\n\x07\x61\x64\x64ress\x18\x05 \x01(\x0b\x32\x08.Address\x12%\n\x07\x63ompany\x18\x06 \x01(\x0b\x32\x14.EchoRequest.Company\x12!\n\x03\x61ny\x18\x07 \x01(\x0b\x32\x14.google.protobuf.Any\x12\"\n\x03map\x18\x0b \x03(\x0b\x32\x15.EchoRequest.MapEntry\x12-\n\ttimestamp\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a*\n\x08MapEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x32\n\x07\x43ompany\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x08.AddressB\x08\n\x06_emailJ\x04\x08\x08\x10\x0bR\x06\x65mail1R\x05name1\")\n\x07\x41\x64\x64ress\x12\x10\n\x08province\x18\x01 \x01(\t\x12\x0c\n\x04\x63ity\x18\x02 \x01(\t\"\xf8\x02\n\x0c\x45\x63hoResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07hobbies\x18\x02 \x03(\t\x12\x12\n\x05\x65mail\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x03sex\x18\x04 \x01(\x0e\x32\x04.Sex\x12\x19\n\x07\x61\x64\x64ress\x18\x05 \x01(\x0b\x32\x08.Address\x12&\n\x07\x63ompany\x18\x06 \x01(\x0b\x32\x15.EchoResponse.Company\x12!\n\x03\x61ny\x18\x07 \x01(\x0b\x32\x14.google.protobuf.Any\x12#\n\x03map\x18\x0b \x03(\x0b\x32\x16.EchoResponse.MapEntry\x12-\n\ttimestamp\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x32\n\x07\x43ompany\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x08.Address\x1a*\n\x08MapEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x08\n\x06_email2l\n\x04\x45\x63ho\x12\'\n\x08TestEcho\x12\x0c.EchoRequest\x1a\r.EchoResponse\x12;\n\tTestEmpty\x12\x16.google.protobuf.Empty\x1a\x16.google.protobuf.EmptyB\tZ\x07.;protob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -29,20 +30,20 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_ECHOREQUEST_MAPENTRY']._serialized_options = b'8\001'
   _globals['_ECHORESPONSE_MAPENTRY']._options = None
   _globals['_ECHORESPONSE_MAPENTRY']._serialized_options = b'8\001'
-  _globals['_ECHOREQUEST']._serialized_start=98
-  _globals['_ECHOREQUEST']._serialized_end=445
-  _globals['_ECHOREQUEST_MAPENTRY']._serialized_start=320
-  _globals['_ECHOREQUEST_MAPENTRY']._serialized_end=362
-  _globals['_ECHOREQUEST_COMPANY']._serialized_start=364
-  _globals['_ECHOREQUEST_COMPANY']._serialized_end=414
-  _globals['_ADDRESS']._serialized_start=447
-  _globals['_ADDRESS']._serialized_end=488
-  _globals['_ECHORESPONSE']._serialized_start=491
-  _globals['_ECHORESPONSE']._serialized_end=820
-  _globals['_ECHORESPONSE_COMPANY']._serialized_start=364
-  _globals['_ECHORESPONSE_COMPANY']._serialized_end=414
-  _globals['_ECHORESPONSE_MAPENTRY']._serialized_start=320
-  _globals['_ECHORESPONSE_MAPENTRY']._serialized_end=362
-  _globals['_ECHO']._serialized_start=822
-  _globals['_ECHO']._serialized_end=930
+  _globals['_ECHOREQUEST']._serialized_start=131
+  _globals['_ECHOREQUEST']._serialized_end=525
+  _globals['_ECHOREQUEST_MAPENTRY']._serialized_start=400
+  _globals['_ECHOREQUEST_MAPENTRY']._serialized_end=442
+  _globals['_ECHOREQUEST_COMPANY']._serialized_start=444
+  _globals['_ECHOREQUEST_COMPANY']._serialized_end=494
+  _globals['_ADDRESS']._serialized_start=527
+  _globals['_ADDRESS']._serialized_end=568
+  _globals['_ECHORESPONSE']._serialized_start=571
+  _globals['_ECHORESPONSE']._serialized_end=947
+  _globals['_ECHORESPONSE_COMPANY']._serialized_start=444
+  _globals['_ECHORESPONSE_COMPANY']._serialized_end=494
+  _globals['_ECHORESPONSE_MAPENTRY']._serialized_start=400
+  _globals['_ECHORESPONSE_MAPENTRY']._serialized_end=442
+  _globals['_ECHO']._serialized_start=949
+  _globals['_ECHO']._serialized_end=1057
 # @@protoc_insertion_point(module_scope)

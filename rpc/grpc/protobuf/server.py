@@ -29,6 +29,8 @@ class Echoer(protobuf_pb2_grpc.EchoServicer):
             print("Any解压: %s" % address)
         for key, value in request.map.items():
             resp.map[key] = value
+        resp.timestamp.seconds = request.timestamp.seconds
+        resp.timestamp.nanos = request.timestamp.nanos
         return resp
 
     def TestEmpty(self, request, context):

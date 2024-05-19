@@ -20,6 +20,8 @@ def run():
             "key1": "value1",
             "key2": "value2"
         }
+        timestamp = protobuf_pb2.google_dot_protobuf_dot_timestamp__pb2.Timestamp()
+        timestamp.GetCurrentTime()
         req = protobuf_pb2.EchoRequest(
             name="CaoChao",
             hobbies=["basketball", "football"],
@@ -29,6 +31,7 @@ def run():
             company=company,
             any=any,
             map=map,
+            timestamp=timestamp,
         )
 
         response: protobuf_pb2.EchoResponse = stub.TestEcho(req)
